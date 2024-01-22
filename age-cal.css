@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+body {
+    padding: 4vh;
+    background: linear-gradient(to right, #f4f4f4, #e0e0e0);
+    color: #333333;
+    font-family: 'Open Sans', sans-serif;
+
+}
+
+h1 {
+    text-align: center;
+    color: #007BFF;
+}
+
+
+#wrapper {
+    margin-top: 30px;
+}
+
+.container {
+    font-weight: 500;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 20px;
+    padding: 25px 15px;
+    border-bottom: 1px solid #dcdcdc;
+    border-radius: 12px;
+    margin-top: 20px;
+
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.container input, button{
+    padding: 14px;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+}
+
+.container input{
+    border: 1px solid #ccc;
+}
+
+.container button{
+    color: white;
+    background-color: #007BFF;
+}
+
+#result{
+    height: 15vh;
+    font-weight: 500;
+    background: linear-gradient(to right, #36D1DC, #5B86E5);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 20px;
+    padding: 25px 15px;
+    border-bottom: 1px solid #dcdcdc;
+    border-radius: 12px;
+    margin-top: 40px;
+
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+#result h2{
+    font-size: 50px;
+}
+
+.hidden{
+    opacity: 0;
+}
+
+/* Disable tap effect on mobile devices */
+.container:active {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/*----------------------------- for larger screens - responsiveness  ----------------------------------*/
+
+@media only screen and (min-width: 600px) {
+    h1 {
+        font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+        max-width: 30vw;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .container {
+        padding: 35px 20px;
+    }
+
+    .container input{
+        display: flex;
+        justify-content: space-between;
+        width: 10vw;
+        padding: 16px;
+        cursor: pointer;
+    }
+
+    .container button{
+        padding: 16px;
+        cursor: pointer;
+    }
+
+    #result{
+        height: 20vh;
+    }
+
+}
+/* ------------------------------------------------------------------------------------------------- */
