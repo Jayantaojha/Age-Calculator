@@ -2,8 +2,14 @@ const body = document.querySelector('body');
 const inputdob = document.querySelector('#input-date');
 const calculateBtn = document.querySelector('#calculate-btn');
 const result = document.querySelector('#result');
+const h1 = document.querySelector('h1');
 const h2 = document.querySelector('h2');
 const p = document.querySelector('p');
+
+
+h1.addEventListener('click', () => {
+    window.location.href = 'index.html';
+})
 
 
 calculateBtn.addEventListener('click', () => {
