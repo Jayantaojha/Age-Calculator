@@ -19,38 +19,82 @@ calculateBtn.addEventListener('click', () => {
         const dob = new Date(dobValue);
         const today = new Date();
 
-        const calculatedAge = calculateAge(dob, today);
-
-
         function calculateAge() {
             const birthYear = dob.getFullYear();
-            const currentYear = today.getFullYear();
-            const age = currentYear - birthYear;
+            const birthMonth = dob.getMonth();
+            const birthDay = dob.getDate();
 
-            // Check if the birthday has occurred this year
-            if (
-                today.getMonth() < dob.getMonth() ||
-                (today.getMonth() === dob.getMonth() &&
-                    today.getDate() < dob.getDate())
-            ) {
-                return age - 1; // Subtract 1 if the birthday hasn't occurred yet
+            const currentYear = today.getFullYear();
+            const currentMonth = today.getMonth();
+            const currentDay = today.getDate();
+
+            let ageYears = currentYear - birthYear;
+
+            // check for years
+            if (currentMonth < birthMonth || (currentMonth === birthMonth && currentDay < birthDay)) {
+                ageYears--;
             }
 
-            return age;
+            // check for months
+            let ageMonths = currentMonth - birthMonth;
+            if (ageMonths < 0) {
+                ageMonths = ageMonths + 12;
+            }
+
+            // check for days
+            let ageDays = currentDay - birthDay;
+            if (ageDays < 0) {
+                const lastMonthDate = new Date(currentYear, currentMonth, 0).getDate();
+                ageDays = ageDays + lastMonthDate;
+                ageMonths--;
+            }
+
+            return {
+                finalYears: ageYears,
+                finalMonths: ageMonths,
+                finalDays: ageDays
+            }
+
         }
 
 
         // Display the result
-        if (calculateAge() !== -1) {
-            p.innerText = "Your Age: ";
-            h2.innerText = calculateAge();
+        const ageMessage = document.querySelector('#age-Message');
+        const ddmmyy = document.querySelector('#ddmmyy');
+        const years = document.querySelector('#years');
+        const months = document.querySelector('#months');
+        const days = document.querySelector('#days');
+
+        const ageDetails = calculateAge(); // returns an object - years, months, days
+
+        if (ageDetails.finalDays !== -1 && ageDetails.finalMonths !== -1) 
+        {
+            ageMessage.innerText = "Your Age: ";
+            ageMessage.style.textAlign = "start";
+            ddmmyy.style.opacity = "1";
+
+            years.innerText = ageDetails.finalYears;
+            months.innerText = ageDetails.finalMonths;
+            days.innerText = ageDetails.finalDays;
+
             result.classList.remove('hidden');
             result.style.background = 'linear-gradient(to right, #36D1DC, #5B86E5)';
-            result.style.height = "15vh";
+
+            // checking for larger screens
+            if (screen.width < 600) {
+                result.style.height = "15vh";
+            }
+            else {
+                ageMessage.style.fontSize = "18px";
+                ageMessage.style.paddingLeft = "4px";
+                result.style.height = "25vh";
+                result.style.paddingTop = "35px";
+            }
         }
-        else if(calculateAge() === -1){
-            p.innerText = "You are not born yet !!!";
-            h2.innerText = "";
+        else {
+            ageMessage.innerText = "You are not born yet !!!";
+            ageMessage.style.textAlign = "center";
+            ddmmyy.style.opacity = "0";
             result.classList.remove('hidden');
             result.style.background = 'linear-gradient(to right, #FFB6C1, #FF69B4)';
             result.style.height = "30px";

@@ -65,10 +65,6 @@ h1:active {
     font-weight: 500;
     background: linear-gradient(to right, #36D1DC, #5B86E5);
     color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    column-gap: 20px;
     padding: 25px 15px;
     border-bottom: 1px solid #dcdcdc;
     border-radius: 12px;
@@ -78,8 +74,26 @@ h1:active {
 }
 
 
-#result h2{
-    font-size: 50px;
+#result p{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#ddmmyy{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#ddmmyy h2{
+    font-size: 35px;
+}
+
+#ddmmyy p{
+    color: #333333;
+    font-size: 14px;
+    margin-top: 10px;
 }
 
 .hidden{
@@ -91,7 +105,7 @@ h1:active {
     -webkit-tap-highlight-color: transparent;
 }
 
-/*----------------------------- for larger screens - responsiveness  ----------------------------------*/
+/*----------------------------- for larger screens  ----------------------------------*/
 
 @media only screen and (min-width: 600px) {
     h1 {
@@ -121,8 +135,14 @@ h1:active {
         cursor: pointer;
     }
 
-    #result{
-        height: 20vh;
+    #ddmmyy h2{
+        font-size: 50px;
+    }
+    
+    #ddmmyy p{
+        color: #333333;
+        font-size: 18px;
+        margin-top: 10px;
     }
 
 }
