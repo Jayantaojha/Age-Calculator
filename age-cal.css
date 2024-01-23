@@ -18,6 +18,11 @@ h1 {
     cursor: pointer;
 }
 
+/* Disable tap effect on mobile devices */
+h1:active {
+    -webkit-tap-highlight-color: transparent;
+}
+
 
 #wrapper {
     margin-top: 30px;
