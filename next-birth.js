@@ -3,7 +3,7 @@ const h1 = document.querySelector('h1');
 const inputdob = document.querySelector('#input-date');
 const calculateBtn = document.querySelector('#calculate-btn');
 const result = document.querySelector('#result');
-const h2 = document.querySelector('#ddmmyy h2');
+const h3 = document.querySelector('#ddmmyy h3');
 const p = document.querySelector('#ddmmyy p');
 const ageMessage = document.querySelector('#age-message');
 const pText = document.querySelector('#next-birth-text');
@@ -52,18 +52,33 @@ calculateBtn.addEventListener('click', () => {
                 // calculate the days until the next birthday
                 const daysUntilBirthday = Math.ceil((nextBirthday - today) / (24 * 60 * 60 * 1000));
 
+
+                let leftMonths = birthMonth - currentMonth;
+
+                // calculation the months and days left
+                if(leftMonths < 0){
+                    leftMonths += 12;
+                }
+
+                let leftDays = currentDay - birthDay;
+                if (leftDays < 0) {
+                    const lastMonthDate = new Date(currentYear, currentMonth, 0).getDate();
+                    leftDays = leftDays + lastMonthDate;
+                    leftMonths--;
+                }
+
                 return {
                     nextBirthday: nextBirthday,
-                    daysUntilBirthday: daysUntilBirthday
+                    daysUntilBirthday: daysUntilBirthday,
+                    leftMonths: leftMonths,
+                    leftDays: leftDays,
                 };
             }
 
             // Display the result
-            pText.style.opacity = "0.8";
 
             pData.style.color = "#333333";
             pData.style.paddingLeft = "30px";
-            pData.style.opacity = "0.5";
 
             const birthdayDetails = calculateNextBirthday();
 
@@ -75,8 +90,8 @@ calculateBtn.addEventListener('click', () => {
                 ddmmyy.style.opacity = "1";
 
                 p.innerText = `Days Until Next Birthday: `;
-                h2.innerText = birthdayDetails.daysUntilBirthday;
-                h2.style.color = "#333333";
+                h3.innerText = `${birthdayDetails.leftMonths} Months ${birthdayDetails.leftDays} Days`;
+                h3.style.color = "#333333";
 
                 result.classList.remove('hidden');
                 pText.style.marginLeft = "0px";

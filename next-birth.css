@@ -88,16 +88,18 @@ h1:active {
     display: inline;
 }
 
-
-#ddmmyy{
-    margin-top: 20px;
+#output-text{
     display: flex;
     justify-content: space-between;
-    align-items: center;
 }
 
-#ddmmyy h2{
-    font-size: 35px;
+
+#ddmmyy{
+    margin-top: 25px;
+}
+
+#ddmmyy h3{
+    margin-top: 10px;
 }
 
 #ddmmyy p{
@@ -149,12 +151,19 @@ h1:active {
         cursor: pointer;
     }
 
-    #ddmmyy h2{
-        font-size: 50px;
+    #output-text{
+        padding-right: 10px;
+    }
+
+    #ddmmyy{
+        margin-top: 40px;
+    }
+
+    #ddmmyy h3{
+        font-size: 35px;
     }
     
     #ddmmyy p{
-        color: #333333;
         font-size: 18px;
         margin-top: 10px;
     }
