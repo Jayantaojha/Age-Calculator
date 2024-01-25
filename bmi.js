@@ -72,13 +72,49 @@ function calculateBMI() {
     }
 
     result = parseFloat(personDetails.currentWeight) / (parseFloat(personDetails.currentHeight) * parseFloat(personDetails.currentHeight));
-    return result.toFixed(2); // Round to 2 decimal places
+    const bmi = result.toFixed(2); // Round to 2 decimal places
+
+
+    let message = 'You Have Normal Body Weight!';
+
+    if (personDetails.sex === 'male') {
+        if (personDetails.currentAge < 18) {
+            if (bmi < 18.5) {
+                message = 'You Have Under Body Weight!';
+            } else if (bmi >= 25) {
+                message = 'You Have Over Body Weight!';
+            }
+        } else {
+            if (bmi < 18.5) {
+                message = 'You Have Under Body Weight!';
+            } else if (bmi >= 25) {
+                message = 'You Have Over Body Weight!';
+            }
+        }
+    } else if (personDetails.sex === 'female') {
+        if (personDetails.currentAge < 18) {
+            if (bmi < 18.5) {
+                message = 'You Have Under Body Weight!';
+            } else if (bmi >= 25) {
+                message = 'You Have Over Body Weight!';
+            }
+        } else {
+            if (bmi < 18.5) {
+                message = 'You Have Under Body Weight!';
+            } else if (bmi >= 25) {
+                message = 'You Have Over Body Weight!';
+            }
+        }
+    }
+
+    return { bmi, message };
 }
 
 button.addEventListener('click', () => {
     if (personDetails.sex === undefined || personDetails.currentAge === undefined || personDetails.currentHeight === undefined || personDetails.currentWeight === undefined) {
         alert('Provide All The Required Details!');
     } else {
+        const { bmi, message } = calculateBMI();
 
         const div = document.createElement('div');
         div.style.position = "absolute";
@@ -98,10 +134,10 @@ button.addEventListener('click', () => {
         div.style.fontFamily = 'system-ui, -apple-system, BlinkMacSystemFont, Roboto,  sans-serif';
 
         div.innerHTML = `<p style="color: #cacaca">Your BMI</p> 
-                <h1 style="font-size: 65px">${calculateBMI()}</h1> 
-                <p style="color: #53f0ce; font-size: 18px; font-weight: 500">You Have Normal Body Weight !</p>
-                <button class="btn">Back</button>
-                `;
+        <h1 style="font-size: 65px">${bmi}</h1> 
+        <p style="color: #53f0ce; font-size: 18px; font-weight: 500">${message}</p>
+        <button class="btn">Back</button>
+        `;
 
         body.appendChild(div);
 
