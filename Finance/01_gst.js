@@ -1,62 +1,40 @@
 const body = document.querySelector('body');
 const amount = document.querySelector('#input-value');
-const percent = Array.from(document.querySelectorAll('#gst option'));
+const gstSelect = document.querySelector('#gst');
 const button = document.querySelector('button');
 
 document.addEventListener('DOMContentLoaded', () => {
     amount.value = "";
 })
 
-let price;
-let amountArr = 0;
+let gstRate = 18; // Default GST rate
 
-amount.addEventListener('keypress', (e) => {
-    if(e.key === "Enter"){
-        price = amount.value;
-        console.log(price);
-    }
-    else{
-        amountArr += amount.value;
-    }
-    console.log(amountArr);
-
+gstSelect.addEventListener('change', () => {
+    gstRate = parseInt(gstSelect.value);
 })
-
-
-let gstRate;
-
-function calculateGST() {
-    const gstAmount = parseInt(amount.value) * parseInt(gstRate) / 100;
-
-    const finalPrice = parseInt(amount.value) + gstAmount;
-
-    return finalPrice;
-}
-
-percent.forEach((option) => {
-    option.addEventListener('click', () => {
-        gstRate = option.value;
-    })
-})
-
-
 
 button.addEventListener('click', () => {
-    const finalAmount = calculateGST();
+    let principal = parseInt(amount.value);
+
+    if (isNaN(principal)) {
+        return;
+    }
+
+    const finalAmount = calculateGST(principal, gstRate);
 
     const div = document.createElement('div');
     div.innerHTML = `
-            <i class="fa-solid fa-xmark" style="cursor: pointer; font-size: 25px;"></i>
+        <i class="fa-solid fa-xmark" style="cursor: pointer; font-size: 25px;"></i>
 
-            <div id="result-div">
-                <p>Final Price</p>
-                <p id="result-message">${finalAmount}</p>
-            </div>
+        <div id="result-div">
+            <p>Final Price</p>
+            <p id="result-message">${finalAmount}</p>
+        </div>
 
-            <div id="information-div">
-                <p id="information">CGST/SGST: ${gstRate}</p>
-            </div>
-                    `;
+        <div id="information-div">
+            <p id="information">CGST/SGST: ${gstRate / 2}</p>
+        </div>
+    `;
 
     if (screen.width > 600) {
         div.style.position = 'absolute';
@@ -79,16 +57,16 @@ button.addEventListener('click', () => {
         div.style.padding = "10px 20px";
     }
 
-
-
     body.appendChild(div);
-
 
     const xIcon = document.querySelector('.fa-xmark');
     xIcon.addEventListener('click', () => {
         body.removeChild(div);
     })
-
-
 })
 
+function calculateGST(principal, rate) {
+    const gstAmount = principal * rate / 100;
+    const finalPrice = principal + gstAmount;
+    return finalPrice;
+}
