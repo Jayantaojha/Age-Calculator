@@ -32,8 +32,14 @@ bmi.addEventListener('click', () => {
 // finance 
 
 const currency = document.querySelector('#currency');
+const gst = document.querySelector('#gst');
 
 
 currency.addEventListener('click', () => {
     window.location.href = 'https://jayantaojha.github.io/Currency-Converter/';
 })
+
+gst.addEventListener('click', () => {
+    window.location.href = 'Finance/01_gst.html';
+})
+
