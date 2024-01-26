@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+    height: 100vh;
+    padding: 20px;
+    color: #ecf0f1;
+    background: linear-gradient(180deg, #2c3a47, #1d262f);
+}
+
+body h1 {
+    text-align: center;
+    font-size: 30px;
+}
+
+#input-price {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    
+}
+
+#input-value {
+    color: #ecf0f1;
+    font-weight: 500;
+    font-size: 18px;
+    outline: none;
+    border: none;
+    text-align: right;
+    background: none;
+}
+
+#gst-div {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+#gst-div select {
+    padding: 10px;
+    font-size: 14px;
+    background-color: #38444f; /* Dark blue-gray color */
+    color: #ecf0f1; /* Text color for better contrast */
+    outline: none;
+    border: none;
+    border-radius: 6px;
+}
+
+#result-div {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    align-items: center;
+}
+
+#result-message {
+    font-weight: 600;
+    font-size: 40px;
+}
+
+#information-div {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+#information {
+    width: 100%;
+    text-align: center;
+    color: grey;
+    font-weight: 500;
+}
+
+@media only screen and (min-width: 600px) {
+    body {
+        width: 50vw;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 5vh;
+        font-size: 18px;
+    }
+}
