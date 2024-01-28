@@ -34,6 +34,7 @@ bmi.addEventListener('click', () => {
 const currency = document.querySelector('#currency');
 const gst = document.querySelector('#gst');
 const loan = document.querySelector('#loan');
+const discount = document.querySelector('#discount');
 
 
 currency.addEventListener('click', () => {
@@ -48,3 +49,6 @@ loan.addEventListener('click', () => {
     window.location.href = 'Finance/02_loan.html';
 })
 
+discount.addEventListener('click', () => {
+    window.location.href = 'Finance/03_discount.html';
+})
