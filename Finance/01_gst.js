@@ -55,6 +55,10 @@ button.addEventListener('click', () => {
         div.style.height = "80vh";
         div.style.borderRadius = "12px";
         div.style.padding = "10px 20px";
+
+        gstSelect.style.opacity = '0';
+        amount.style.opacity = '0';
+        button.style.opacity = '0';
     }
 
     body.appendChild(div);
@@ -62,6 +66,9 @@ button.addEventListener('click', () => {
     const xIcon = document.querySelector('.fa-xmark');
     xIcon.addEventListener('click', () => {
         body.removeChild(div);
+        gstSelect.style.opacity = '1';
+        amount.style.opacity = '1';
+        button.style.opacity = '1';
     })
 })
 
