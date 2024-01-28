@@ -33,6 +33,7 @@ bmi.addEventListener('click', () => {
 
 const currency = document.querySelector('#currency');
 const gst = document.querySelector('#gst');
+const loan = document.querySelector('#loan');
 
 
 currency.addEventListener('click', () => {
@@ -41,5 +42,9 @@ currency.addEventListener('click', () => {
 
 gst.addEventListener('click', () => {
     window.location.href = 'Finance/01_gst.html';
+})
+
+loan.addEventListener('click', () => {
+    window.location.href = 'Finance/02_loan.html';
 })
 
