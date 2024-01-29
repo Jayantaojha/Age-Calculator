@@ -36,11 +36,13 @@ button.addEventListener('click', () => {
     `;
 
     body.appendChild(finalDiv);
+    button.style.opacity = '0';
 
     const xIcon = document.querySelector('.fa-xmark');
 
     xIcon.addEventListener('click', () => {
         body.removeChild(finalDiv);
+        button.style.opacity = '1';
     })
 })
 
